@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Data is downloaded by the pipeline, never committed
+data/
+
+# Secrets (EDGAR User-Agent email)
+.env
+
+# marimo session cache
+__marimo__/
