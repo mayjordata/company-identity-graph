@@ -1,0 +1,37 @@
+[project]
+name = "company-identity-graph"
+version = "0.1.0"
+description = "Identity graph of legal entities: CIK, LEI, ticker and name resolved with measured match confidence."
+readme = "README.md"
+authors = [
+    { name = "Devarus May", email = "53805465+mayjordata@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "altair>=6.3.0",
+    "duckdb>=2.0.0",
+    "pandas>=3.1.0",
+    "pyarrow>=26.0.0",
+    "requests>=2.34.2",
+]
+
+[project.scripts]
+company-identity-graph = "company_identity_graph:main"
+
+[build-system]
+requires = ["uv_build>=0.9.21,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.marimo.runtime]
+# Expensive cells (multi-million-row loads) shouldn't rerun on every edit:
+# downstream cells are marked stale and run when you choose.
+on_cell_change = "lazy"
+# Opening a notebook doesn't run it; press Run when ready (avoids surprise multi-GB loads).
+auto_instantiate = false
+
+[dependency-groups]
+dev = [
+    "marimo>=0.25.2",
+    "pytest>=9.2.0",
+    "ruff>=0.17.3",
+]
